@@ -39,9 +39,12 @@
 
             <div><h2>Task Tracker</h2>
             <ul>
+                
+                <!--<li class="list-item"><a href="{{-- Route('about.us')--}}">About</a></li>-->
+                <!--<li class="list-item"><a href="{{-- URL::to('contact') --}}">Contact</a></li>-->
                 <li class="list-item"><a href="{{ Route('about.us')}}">About</a></li>
-                <!--<li class="list-item"><a href="{{ URL::to('contact')}}">Contact</a></li>-->
                 <li class="list-item"><a href="{{ Route('contact.us')}}">Contact</a></li>
+                <li class="list-item"><a href="{{ Route('show.name')}}">Discover</a></li>
                 
 
 

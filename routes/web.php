@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Example\FirstController;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +19,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-ROute::View('/about','about')->name('about.us');
+//ROute::View('/about','about')->name('about.us');
+
+// Route::get('/about', function (Request $request) {
+    
+//     //$token = $request->session()->token();
+//     //$token = csrf_token();
+//     //dd($token);
+    
+//     return view('about');
+// });
+
+//Route::get('/about','App\Http\Controllers\Example\FirstController@index')->name('about.us');
+
+
+Route::get('/about',[FirstController::class,'about_index'])->name('about.us');
+
+Route::post('/studenStore',[FirstController::class,'studenStore'])->name('student.store');
+
+Route::post('/storeDetails',[FirstController::class,'storeDetails'])->name('store.named');
 
 
 Route::get(md5('/contact'), function () {
@@ -31,9 +50,20 @@ Route::get('/country', function () {
 })->middleware('country');
 
 
+
+Route::get('/showName',[FirstController::class,'showName'])->name('show.name');
+
 Route::get('/test', function () {
     app()->make("kl");
 });
+
+
+Route::get('/all', function (Request $request) {
+    $data = $request->session()->all();
+    
+    dd($data);
+});
+
 
 Route::get('/testa', function () {
     ert::checksum();
