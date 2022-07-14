@@ -13,11 +13,22 @@ class FirstController extends Controller
     }
 
     public function studenStore(Request $request){
+
+
+
         dd($request->all());
     }
     public function storeDetails(Request $request){
+
+        $request->validate([
+            'name' => 'required|unique:posts|max:50',
+            'mail' =>'required|unique:posts|email',
+            'pass' => 'required|min:8',
+        ]);
+
         dd($request->all());
-        return redirect()->back()->with('success','Data inserted!');
+
+        //return redirect()->back()->with('success','Data inserted!');
     }
 
 
@@ -29,6 +40,8 @@ class FirstController extends Controller
     }
     
     public function showName(Request $request){
+
+
         $request->session()->forget('key');
         session(['up' => 'upper']);
         //return view('name',['name'=>'Sunve']);
